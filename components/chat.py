@@ -67,7 +67,7 @@ def render_chat():
             st.write("Current Session:", st.session_state.video_id)
 
             answer = st.session_state.chain.invoke(
-                {"question": prompt},
+                prompt,
                 config={
                     "configurable": {
                         "session_id": st.session_state.video_id

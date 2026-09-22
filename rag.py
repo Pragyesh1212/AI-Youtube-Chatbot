@@ -33,27 +33,41 @@ def build_rag_chain(vector_store):
     )
 
     prompt = ChatPromptTemplate.from_template(
-        """
-You are an expert YouTube AI assistant.
+    """
+    You are an expert YouTube AI assistant.
 
-Use ONLY the transcript context below.
+    Use ONLY the transcript context below to answer the user's question.
 
-If the transcript does not contain the answer, say:
+    IMPORTANT LANGUAGE RULE:
+    - If the user's question is in English, answer entirely in English.
+    - If the user's question is in Hindi, answer entirely in Hindi.
+    - If the user's question is a mixture of Hindi and English (Hinglish), answer in the same mixed style.
+    - Do not unnecessarily translate the user's question or transcript.
+    - Keep technical terms such as Python, API, FAISS, RAG, Time Complexity, Big-O, etc. in their standard English form when appropriate.
 
-"I couldn't find that information in the video's transcript."
+    IMPORTANT ACCURACY RULE:
+    - Answer only using information available in the transcript context.
+    - Do not add information from your general knowledge.
+    - If the transcript does not contain the answer, say:
+    "I couldn't find that information in the video's transcript."
 
-Transcript:
+    ANSWER STYLE:
+    - For simple questions, give a concise answer.
+    - For summary questions, provide clear bullet points.
+    - For detailed questions, explain the answer with relevant details from the transcript.
+    - Avoid unnecessary repetition.
 
-{context}
+    Transcript:
 
-Question:
+    {context}
 
-{question}
+    Question:
 
-Answer:
-"""
+    {question}
+
+    Answer:
+    """
     )
-
     chain = (
         {
             "context": retriever | RunnableLambda(format_docs),

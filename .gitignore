@@ -1,34 +1,29 @@
 # Python
 __pycache__/
-*.py[cod]
+*.pyc
 *.pyo
+*.pyd
+*.db
 
 # Virtual Environment
-myvenv/
 venv/
-.env/
-
-# Environment Variables
 .env
 
-# Streamlit
-.streamlit/
-
-# VS Code
+# IDE
 .vscode/
+.idea/
 
-# OS Files
-.DS_Store
-Thumbs.db
+# Streamlit
+.streamlit/secrets.toml
 
-# Python cache
-.pytest_cache/
-
-# FAISS Cache
-data/faiss/
-
-# Transcript Cache
-data/transcripts/
+# LangSmith
+.langsmith/
 
 # Logs
 *.log
+
+# OS
+.DS_Store
+Thumbs.db
+# Project data/cache
+data/

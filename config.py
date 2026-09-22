@@ -13,7 +13,7 @@ GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 # Models
 # ==========================
 
-LLM_MODEL = "llama-3.3-70b-versatile"
+LLM_MODEL = "openai/gpt-oss-120b"
 EMBEDDING_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
 
 # ==========================
